@@ -1,9 +1,6 @@
 package me.benny.fcp.point;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import me.benny.fcp.point.wallet.PointWallet;
 
 import javax.persistence.*;
@@ -28,11 +25,12 @@ public class Point extends IdEntity {
     LocalDate earnedDate;
 
     @Column(name = "expired_date", nullable = false)
-    LocalDate expiredDate;
+    LocalDate expireDate;
 
     @Column(name = "is_used", nullable = false, columnDefinition = "TINYINT",length = 1)
     boolean used;
 
+    @Setter
     @Column(name = "is_expired", nullable = false, columnDefinition = "TINYINT",length = 1)
     boolean expired;
 
@@ -40,12 +38,12 @@ public class Point extends IdEntity {
             PointWallet pointWallet,
             BigInteger amount,
             LocalDate earnedDate,
-            LocalDate expiredDate
+            LocalDate expireDate
     ) {
         this.pointWallet = pointWallet;
         this.amount = amount;
         this.earnedDate= earnedDate;
-        this.expiredDate= expiredDate;
+        this.expireDate = expireDate;
         this.used= false;
         this.expired=false;
     }
