@@ -1,10 +1,7 @@
 package me.benny.fcp.point.reservation;
 
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import me.benny.fcp.point.IdEntity;
 import me.benny.fcp.point.wallet.PointWallet;
 
@@ -32,8 +29,10 @@ public class PointReservation extends IdEntity {
     @Column(name = "available_days",nullable = false)
     int availableDays;
 
+    @Setter
     @Column(name = "is_executed", columnDefinition = "TINYINT",length = 1)
     boolean executed;
+
 
     public PointReservation(PointWallet pointWallet, BigInteger amount, LocalDate earnedDate, int availableDays) {
         this.pointWallet = pointWallet;
@@ -43,11 +42,8 @@ public class PointReservation extends IdEntity {
         this.executed = false;
     }
 
-    public void execute() {
-        this.executed = true;
-    }
 
-    public LocalDate getExpiredDate() {
+    public LocalDate getExpireDate() {
         return this.earnedDate.plusDays(this.availableDays);
     }
 }
