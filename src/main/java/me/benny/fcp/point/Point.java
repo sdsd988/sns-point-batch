@@ -24,7 +24,7 @@ public class Point extends IdEntity {
     @Column(name = "earned_date", nullable = false)
     LocalDate earnedDate;
 
-    @Column(name = "expired_date", nullable = false)
+    @Column(name = "expire_date", nullable = false)
     LocalDate expireDate;
 
     @Column(name = "is_used", nullable = false, columnDefinition = "TINYINT",length = 1)

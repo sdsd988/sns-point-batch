@@ -11,7 +11,7 @@ public class ExpiredPointSummary {
     String userId;
     BigInteger amount; //만료 금액
 
-    @QueryProjection
+    @QueryProjection //생성자를 Q클래스로 변환시켜주는 어노테이션
     public ExpiredPointSummary(
             String userId,
             BigInteger amount
